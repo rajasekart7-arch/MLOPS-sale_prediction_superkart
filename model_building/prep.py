@@ -20,7 +20,7 @@ api = HfApi(token=os.getenv("HF_TOKEN"))
 
 file_path = hf_hub_download(
     repo_id="Rajse/Superkart-Dataset",
-    filename="superkart.csv",
+    filename="SuperKart.csv",
     repo_type="dataset"
 )
 
