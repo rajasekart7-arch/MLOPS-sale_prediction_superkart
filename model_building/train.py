@@ -21,10 +21,6 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-mlflow.set_tracking_uri("file:./mlruns")
-
-mlflow.set_experiment("mlops-training-experiment")
-
 def adj_r2_score(n_features: int, targets, predictions) -> float:
     """Compute adjusted R-squared."""
     r2 = r2_score(targets, predictions)
@@ -58,7 +54,7 @@ def main():
     if not hf_token:
         raise ValueError("HF_TOKEN not found. Add it to your environment or .env file.")
 
-    mlflow.set_tracking_uri("http://localhost:5000")
+    mlflow.set_tracking_uri("file:./mlruns")
     mlflow.set_experiment("mlops-training-experiment")
 
     api = HfApi(token=hf_token)
