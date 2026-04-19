@@ -54,7 +54,7 @@ def main():
     if not hf_token:
         raise ValueError("HF_TOKEN not found. Add it to your environment or .env file.")
 
-    mlflow.set_tracking_uri("file:./mlruns")
+    mlflow.set_tracking_uri("http://localhost:5000")
     mlflow.set_experiment("mlops-training-experiment")
 
     api = HfApi(token=hf_token)
