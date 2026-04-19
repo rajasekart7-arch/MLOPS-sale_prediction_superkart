@@ -21,6 +21,9 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+mlflow.set_tracking_uri("file:./mlruns")
+
+mlflow.set_experiment("mlops-training-experiment")
 
 def adj_r2_score(n_features: int, targets, predictions) -> float:
     """Compute adjusted R-squared."""
