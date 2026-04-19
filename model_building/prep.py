@@ -11,12 +11,20 @@ from huggingface_hub import login, HfApi
 from dotenv import load_dotenv
 load_dotenv()
 from datetime import datetime
+from huggingface_hub import hf_hub_download
 
 
 # Define constants for the dataset and output paths
 api = HfApi(token=os.getenv("HF_TOKEN"))
-DATASET_PATH = "hf://datasets/Rajse/Superkart-Dataset/superkart.csv"
-dataset = pd.read_csv(DATASET_PATH)
+
+
+file_path = hf_hub_download(
+    repo_id="Rajse/Superkart-Dataset",
+    filename="superkart.csv",
+    repo_type="dataset"
+)
+
+dataset = pd.read_csv(file_path)
 print("Dataset loaded successfully.")
 
 # Define the target variable for the classification task
