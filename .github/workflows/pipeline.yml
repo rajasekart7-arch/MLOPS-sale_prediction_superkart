@@ -83,7 +83,7 @@ jobs:
       - name: Deploy Backend
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: python hosting/hosting_backend.py
+        run: python hosting_files/hosting_backend.py
 
   deploy-frontend:
     needs: deploy-backend
@@ -101,4 +101,4 @@ jobs:
       - name: Deploy Frontend
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: python hosting/hosting_frontend.py
+        run: python hosting_files/hosting_frontend.py
