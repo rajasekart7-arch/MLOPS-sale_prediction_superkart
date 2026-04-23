@@ -1,7 +1,7 @@
 
 # for hugging face space authentication to upload files
-from huggingface_hub import HfApi
 import os
+from huggingface_hub import HfApi
 
 from dotenv import load_dotenv
 load_dotenv()
