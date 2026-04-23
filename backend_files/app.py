@@ -81,10 +81,10 @@ def predict_sales():
                     return jsonify({'error': f"Invalid numeric value provided for '{col}'."}), 400
 
         # 4. Transform the engineered data using the preprocessor
-        processed_data = preprocessor.transform(input_df_engineered)
+        #processed_data = preprocessor.transform(input_df_engineered)
 
         # 5. Make prediction (no np.exp as target was not log-transformed)
-        predicted_sales = model.predict(processed_data)[0]
+        predicted_sales = model.predict(input_df_engineered)[0]
 
         predicted_price = round(float(predicted_sales), 2)
         return jsonify({'Predicted Price (in dollars)': predicted_price})
@@ -119,8 +119,8 @@ def predict_sales_batch():
         df_engineered[num_cols] = df_engineered[num_cols].apply(pd.to_numeric, errors='coerce')
 
         # --- PREDICTION ---
-        processed = preprocessor.transform(df_engineered)
-        preds = model.predict(processed)
+        #processed = preprocessor.transform(df_engineered)
+        preds = model.predict(df_engineered)
 
         # Build response dictionary
         p_ids = df['Product_Id'] if 'Product_Id' in df.columns else range(len(preds))
